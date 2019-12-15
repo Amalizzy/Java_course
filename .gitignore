@@ -1,0 +1,14 @@
+reports/
+target/
+screenshots/
+test-output/
+.settings/
+.classpath
+.project
+.vscode/
+.idea
+*.iml
+## Allure reports
+.allure 
+allure-results
+allure-reports
