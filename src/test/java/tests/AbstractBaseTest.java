@@ -1,14 +1,22 @@
 package tests;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxDriverLogLevel;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 import java.util.concurrent.TimeUnit;
 
 public class AbstractBaseTest {
+
+    private static final String BROWSER = System.getProperty("browser", "chrome");
+
 
     protected WebDriver driver;
 
@@ -17,16 +25,18 @@ public class AbstractBaseTest {
     @BeforeClass
     public void setUp() {
 
-        System.setProperty("webdriver.chrome.driver", ClassLoader.getSystemResource("driver/chromedriver.exe").getPath());
+//        System.setProperty("webdriver.chrome.driver", ClassLoader.getSystemResource("driver/chromedriver.exe").getPath());
+//
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("--disable-translate");
+//        options.addArguments("--lang=en-us");
+//        driver = new ChromeDriver(options);
+//
+//        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+//
+//        driver.manage().window().maximize();
 
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-translate");
-        options.addArguments("--lang=en-us");
-        driver = new ChromeDriver(options);
-
-        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-
-        driver.manage().window().maximize();
+        driver = getDriver();
 
         driver.navigate().to(NAVIGATE_TO_TELEGRAMME_HOME_PAGE);
     }
@@ -43,6 +53,45 @@ public class AbstractBaseTest {
             TimeUnit.MILLISECONDS.sleep(milliseconds);
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+
+
+    private static WebDriver getChrome() {
+        System.setProperty("webdriver.chrome.driver", ClassLoader.getSystemResource("driver/chromedriver.exe").getPath());
+        ChromeOptions options = new ChromeOptions();
+        options.setHeadless(true);
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-gpu");
+        WebDriver driver = new ChromeDriver(options);
+        driver.manage().window().setSize(new Dimension(1280, 1024));
+        return driver;
+    }
+
+    private static WebDriver getFirefox() {
+        System.setProperty("webdriver.gecko.driver", ClassLoader.getSystemResource("driver/geckodriver.exe").getPath());
+
+        FirefoxProfile profile = new FirefoxProfile();
+        profile.setAcceptUntrustedCertificates(true);
+        profile.setAssumeUntrustedCertificateIssuer(false);
+
+        FirefoxOptions options = new FirefoxOptions();
+        options.setProfile(profile);
+        options.setCapability("marionette", true);
+//        options.setHeadless(true);
+        options.setLogLevel(FirefoxDriverLogLevel.INFO);
+
+        WebDriver driver=new FirefoxDriver(options);
+        return driver;
+    }
+
+    public static WebDriver getDriver() {
+        if (BROWSER.equalsIgnoreCase("chrome")) {
+            return getChrome();
+        } else if (BROWSER.equalsIgnoreCase("firefox")) {
+            return getFirefox();
+        } else {
+            throw new RuntimeException("There is now browser: " + BROWSER);
         }
     }
 }
