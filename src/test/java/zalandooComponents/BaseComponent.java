@@ -9,12 +9,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
-public class BaseZalandoComponent {
+public class BaseComponent {
 
     protected WebDriver driver;
     protected WebDriverWait wait;
 
-    public BaseZalandoComponent(WebDriver driver){
+    public BaseComponent(WebDriver driver){
 
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 10);

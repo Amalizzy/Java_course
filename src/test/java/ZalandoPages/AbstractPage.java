@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import zalandooComponents.HeaderZalandoComponent;
+import zalandooComponents.HeaderComponent;
 
 import java.util.concurrent.TimeUnit;
 
@@ -15,15 +15,15 @@ public class AbstractPage {
     protected WebDriver driver;
     protected WebDriverWait wait;
 
-    protected HeaderZalandoComponent headerZalandoComponent;
+    protected HeaderComponent headerZalandoComponent;
 
     public AbstractPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 10);
-        this.headerZalandoComponent = new HeaderZalandoComponent(driver);
+        this.headerZalandoComponent = new HeaderComponent(driver);
     }
 
-    public HeaderZalandoComponent getheader(){
+    public HeaderComponent getheader(){
 
         return headerZalandoComponent;
     }
@@ -40,7 +40,6 @@ public class AbstractPage {
 
         wait.until(ExpectedConditions.elementToBeClickable(by)).click();
     }
-
 
     protected void clickOutOfScreen(By by){
 

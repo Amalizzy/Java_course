@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class CartZalandoZalandoComponent extends BaseZalandoComponent {
+public class CartComponent extends BaseComponent {
 
     private WebElement cartWebElement;
 
@@ -12,7 +12,7 @@ public class CartZalandoZalandoComponent extends BaseZalandoComponent {
     private static By PRICE_PRODUCT = By.xpath("//div[@class='z-coast-base__article-price__wrapper']//span[contains(@class, 'z-coast-base__price-current')]");
     private static By SIZE_PRODUCT = By.xpath("//div[contains(@class, 'article__details')]/span[4]");
 
-    public CartZalandoZalandoComponent(WebDriver driver, WebElement webElement) {
+    public CartComponent(WebDriver driver, WebElement webElement) {
         super(driver);
         this.cartWebElement = webElement;
     }
@@ -24,12 +24,10 @@ public class CartZalandoZalandoComponent extends BaseZalandoComponent {
 
     public double getPrice(){
 
-
         String price = cartWebElement.findElement(PRICE_PRODUCT).getText();
         String priceWithoutSign = price.substring(1);
         return  Double.parseDouble(priceWithoutSign);
     }
-
 
     public String getSize(){
 

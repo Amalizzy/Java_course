@@ -3,9 +3,9 @@ package zalandooComponents;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class SizeDialogZalandoComponent extends  BaseZalandoComponent{
+public class SizeDialogComponent extends BaseComponent {
 
-    public SizeDialogZalandoComponent(WebDriver driver) {
+    public SizeDialogComponent(WebDriver driver) {
         super(driver);
     }
 

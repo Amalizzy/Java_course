@@ -17,7 +17,6 @@ public class AbstractsTest {
 
     private static final String BROWSER = System.getProperty("browser", "chrome");
 
-
     protected WebDriver driver;
 
     public static String NAVIGATE_TO_ZALANDO_HOME_PAGE = "https://www.zalando.co.uk/women-home/";
@@ -37,7 +36,7 @@ public class AbstractsTest {
 //        driver.manage().window().maximize();
         driver = getDriver();
 
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.manage().window().maximize();
 
         driver.navigate().to(NAVIGATE_TO_ZALANDO_HOME_PAGE);
@@ -46,8 +45,8 @@ public class AbstractsTest {
     @AfterTest
     public void tearDown() {
 
-        driver.close();
-        driver.quit();
+//        driver.close();
+//        driver.quit();
     }
 
     protected void pause(Integer milliseconds) {

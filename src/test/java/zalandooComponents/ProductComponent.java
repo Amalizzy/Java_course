@@ -1,13 +1,13 @@
 package zalandooComponents;
 
-import ZalandoPages.ProductZalandoDetailPage;
+import ZalandoPages.ProductDetailPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class ProductZalandoZalandoComponent extends BaseZalandoComponent {
+public class ProductComponent extends BaseComponent {
 
     private WebElement productListItemWebElement;
 
@@ -16,18 +16,16 @@ public class ProductZalandoZalandoComponent extends BaseZalandoComponent {
     private static By PROMOTIONAL_PRICE = By.xpath(".//div[contains(@class, 'cat_promotionalPrice')]/span[not(contains(.,'From'))]");
     private static By REGULAR_PRICE = By.xpath(".//div[contains(@class, 'cat_originalPrice')]/span");
 
-
-    public ProductZalandoZalandoComponent(WebDriver driver, WebElement webElement) {
+    public ProductComponent(WebDriver driver, WebElement webElement) {
         super(driver);
         this.productListItemWebElement = webElement;
     }
 
-    public ProductZalandoDetailPage clickOnProduct(){
+    public ProductDetailPage clickOnProduct(){
 
         productListItemWebElement.click();
-        return new ProductZalandoDetailPage(driver);
+        return new ProductDetailPage(driver);
     }
-
 
     public boolean isPriceWithDiscount(){
 
@@ -45,12 +43,10 @@ public class ProductZalandoZalandoComponent extends BaseZalandoComponent {
            List<WebElement> promotionalPrices =productListItemWebElement.findElements(PROMOTIONAL_PRICE);
 
            if(promotionalPrices.size() > 0){
-
                price = promotionalPrices.get(0).getText();
            }else{
                price = productListItemWebElement.findElement(REGULAR_PRICE).getText();
            }
-
            return Double.parseDouble(price.substring(1));
 
     }

@@ -1,16 +1,16 @@
 package zalandooComponents;
 
-import ZalandoPages.CartZalandoPage;
+import ZalandoPages.CartPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class HeaderZalandoComponent extends BaseZalandoComponent {
+public class HeaderComponent extends BaseComponent {
 
 
     private static By WOMAN_MENU_ITEM = By.xpath("//a/span[contains(.,'Women')]");
     private static By CART_MENU_ITEM = By.xpath("//a[@href='/cart/']");
 
-    public HeaderZalandoComponent(WebDriver driver) {
+    public HeaderComponent(WebDriver driver) {
         super(driver);
     }
 
@@ -20,10 +20,10 @@ public class HeaderZalandoComponent extends BaseZalandoComponent {
         return new SubmenuComponent(driver);
     }
 
-    public CartZalandoPage clickOnCart(){
+    public CartPage clickOnCart(){
 
         click(CART_MENU_ITEM);
-        return new CartZalandoPage(driver);
+        return new CartPage(driver);
     }
 
 }

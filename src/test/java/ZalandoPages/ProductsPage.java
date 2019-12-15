@@ -3,45 +3,45 @@ package ZalandoPages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import zalandooComponents.ProductZalandoZalandoComponent;
-import zalandooComponents.ProductsHeaderZalandoZalandoComponent;
+import zalandooComponents.ProductComponent;
+import zalandooComponents.ProductsHeaderComponent;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ProductsZalandoPage extends AbstractPage {
+public class ProductsPage extends AbstractPage {
 
-    private ProductsHeaderZalandoZalandoComponent productsHeader;
+    private ProductsHeaderComponent productsHeader;
 
     private static By ONE_PRODUCT_ITEM = By.xpath("//div[@class='cat_cardWrap-2UHT7']");
 
-    public ProductsZalandoPage(WebDriver driver) {
+    public ProductsPage(WebDriver driver) {
         super(driver);
-        this.productsHeader = new ProductsHeaderZalandoZalandoComponent(driver);
+        this.productsHeader = new ProductsHeaderComponent(driver);
     }
 
-    public ProductsHeaderZalandoZalandoComponent getProductsHeader(){
+    public ProductsHeaderComponent getProductsHeader(){
 
         return productsHeader;
     }
 
-    public List<ProductZalandoZalandoComponent> getProducts() {
+    public List<ProductComponent> getProducts() {
 
         pause(2000);
         List<WebElement> productListItems = driver.findElements(ONE_PRODUCT_ITEM);
         return productListItems.stream()
-                .map(item -> new ProductZalandoZalandoComponent(driver, item))
+                .map(item -> new ProductComponent(driver, item))
                 .collect(Collectors.toList());
     }
 
-    public List<ProductZalandoZalandoComponent> getProductsWithDiscount(){
+    public List<ProductComponent> getProductsWithDiscount(){
 
         return getProducts().stream()
                 .filter(item -> item.isPriceWithDiscount())
                 .collect(Collectors.toList());
     }
 
-    public List<ProductZalandoZalandoComponent> getProductsWithPriceRange(){
+    public List<ProductComponent> getProductsWithPriceRange(){
 
         return getProducts().stream()
                 .filter(item -> item.isPriceWithDiscount())

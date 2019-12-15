@@ -3,7 +3,7 @@ package zalandooComponents;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class SubmenuComponent extends BaseZalandoComponent {
+public class SubmenuComponent extends BaseComponent {
 
     private static By SHOES_SUB_MENU_ITEM = By.xpath("//div[@class='z-navicat-header_categoryContainer']//a[@href='/womens-shoes/']");
 
@@ -11,10 +11,10 @@ public class SubmenuComponent extends BaseZalandoComponent {
         super(driver);
     }
 
-    public SubMenuDialogZalandoZalandoComponent clickOnShoesSubMenuItem() {
+    public SubMenuDialogComponent clickOnShoesSubMenuItem() {
 
         click(SHOES_SUB_MENU_ITEM);
-        return new SubMenuDialogZalandoZalandoComponent(driver);
+        return new SubMenuDialogComponent(driver);
     }
 }
 
