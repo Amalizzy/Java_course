@@ -34,7 +34,7 @@ public class InitialTests extends AbstractsTest {
                 .getheader()
                 .clickOnWomanMenuItem()
                 .clickOnShoesSubMenuItem()
-                .clickOnItem();
+                .clickOnItem("Boots");
          productsZalandoPage.getProductsHeader().clickOnPrice().selectOnlySpecialOffers();
 
         Assert.assertEquals(84,productsZalandoPage.getProductsWithDiscount().size() );
@@ -48,7 +48,7 @@ public class InitialTests extends AbstractsTest {
                 .getheader()
                 .clickOnWomanMenuItem()
                 .clickOnShoesSubMenuItem()
-                .clickOnItem();
+                .clickOnItem("Boots");
         productsPage.getProductsHeader().clickOnPrice().setPriceRange("20", "30");
 
         List<ProductComponent> products = productsPage.getProducts();
@@ -67,7 +67,7 @@ public class InitialTests extends AbstractsTest {
                 .getheader()
                 .clickOnWomanMenuItem()
                 .clickOnShoesSubMenuItem()
-                .clickOnItem();
+                .clickOnItem("Boots");
 
         List<ProductComponent> products = productsPage.getProducts();
 

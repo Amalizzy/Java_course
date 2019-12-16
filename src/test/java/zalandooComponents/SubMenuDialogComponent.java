@@ -6,15 +6,14 @@ import org.openqa.selenium.WebDriver;
 
 public class SubMenuDialogComponent extends BaseComponent {
 
-    private static By HOVER_BOOTS_SUB_MENU_ITEM = By.xpath("/html//div[@id='z-navicat-header-root']//div[@class='z-navicat-header_subCategoryContainer']/z-grid/z-grid-item[2]/z-grid/z-grid-item[1]/a[@href='/womens-shoes-boots/']/span[.='Boots']");
 
     public SubMenuDialogComponent(WebDriver driver) {
         super(driver);
     }
 
-    public ProductsPage clickOnItem(){
+    public ProductsPage clickOnItem(String item){
 
-        click(HOVER_BOOTS_SUB_MENU_ITEM);
+        click(By.xpath("//div[@class='z-navicat-header_subCategoryContainer']//span[text()='" + item + "']"));
         return new ProductsPage(driver);
     }
 

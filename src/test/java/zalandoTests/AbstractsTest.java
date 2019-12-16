@@ -45,8 +45,8 @@ public class AbstractsTest {
     @AfterTest
     public void tearDown() {
 
-//        driver.close();
-//        driver.quit();
+        driver.close();
+        driver.quit();
     }
 
     protected void pause(Integer milliseconds) {
