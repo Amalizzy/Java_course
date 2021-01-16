@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
-public class BaseComponent {
+public class n BaseComponent {
 
     protected WebDriver driver;
     protected WebDriverWait wait;
