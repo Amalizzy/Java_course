@@ -32,7 +32,7 @@ public class AlertsPage {
     }
 
     public void triggerPrompt(){
-        driver.findElement(triggerConfirmButton).click();
+        driver.findElement(triggerPromptButton).click();
     }
 
     public void alert_setInput(String text){
